@@ -388,4 +388,173 @@
             <h2>Connect & Interaction</h2>
             <div class="contact-buttons">
                 <a href="https://wa.me/971586724788" target="_blank" class="btn btn-whatsapp">
-                    <svg width="20" height="20" viewBox="0 0 24 24"><path d="M.057 24l1.68
+                    <svg width="20" height="20" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397 0 11.944 0c3.172.001 6.155 1.234 8.397 3.477 2.242 2.242 3.472 5.224 3.472 8.397 0 6.549-5.337 11.93-11.884 11.93-2.007-.001-3.982-.51-5.734-1.482L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.413 9.86-9.845 0-2.63-1.023-5.101-2.882-6.959C16.528 1.886 14.062.862 11.429.862c-5.44 0-9.866 4.414-9.867 9.847 0 1.696.447 3.353 1.295 4.811L1.826 21.8l6.452-1.692zM17.367 14.38c-.327-.164-1.938-.955-2.239-1.064-.301-.109-.52-.164-.738.164-.219.329-.847 1.064-1.039 1.283-.192.219-.384.246-.711.082-.327-.164-1.381-.509-2.631-1.624-.973-.867-1.63-1.94-1.821-2.268-.192-.329-.02-.507.144-.671.147-.148.327-.383.491-.574.164-.192.219-.328.327-.546.109-.218.055-.41-.027-.574-.082-.164-.738-1.777-1.011-2.433-.267-.641-.539-.554-.738-.564-.192-.01-.41-.01-.628-.01-.218 0-.573.082-.873.41-.3.328-1.147 1.12-1.147 2.733 0 1.614 1.174 3.171 1.338 3.39.164.218 2.312 3.53 5.599 4.945.781.337 1.391.537 1.866.689.784.249 1.498.214 2.061.13.628-.094 1.938-.792 2.211-1.558.272-.766.272-1.422.192-1.557-.081-.134-.301-.218-.628-.382z"/></svg>
+                    Chat on WhatsApp
+                </a>
+                
+                <div class="audio-player-container">
+                    <button id="volumeMuteBtn" class="audio-icon-btn" title="Mute/Unmute">
+                        <svg id="volumeIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                            <path id="audio-wave-1" d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                            <path id="audio-wave-2" d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+                        </svg>
+                    </button>
+                    <div class="volume-slider-wrapper">
+                        <input id="volumeSlider" class="volume-slider" type="range" min="0" max="1" step="0.01" value="0.15">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>© 2026 Joe. Driven by curiosity, built with code.</p>
+        </footer>
+
+    </div>
+
+    <audio id="bgMusic" src="mainbrunche/music/1.mp3" loop></audio>
+
+    <script>
+        // 1. Live Matrix Background Animation
+        const canvas = document.getElementById('matrix');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&';
+        const alphabet = letters.split('');
+        const fontSize = 16;
+        let columns = canvas.width / fontSize;
+        let rainDrops = [];
+
+        function initRain() {
+            columns = canvas.width / fontSize;
+            rainDrops = [];
+            for (let x = 0; x < columns; x++) {
+                rainDrops[x] = 1;
+            }
+        }
+        initRain();
+        window.addEventListener('resize', initRain);
+
+        function drawMatrix() {
+            ctx.fillStyle = 'rgba(5, 5, 5, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = '#00ffcc';
+            ctx.font = fontSize + 'px monospace';
+
+            for (let i = 0; i < rainDrops.length; i++) {
+                const text = alphabet[Math.floor(Math.random() * alphabet.length)];
+                ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+
+                if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    rainDrops[i] = 0;
+                }
+                rainDrops[i]++;
+            }
+        }
+        setInterval(drawMatrix, 30);
+
+        // 2. Automated Low-Volume Background Music Manager & Native UI Engine
+        const audio = document.getElementById('bgMusic');
+        const volumeSlider = document.getElementById('volumeSlider');
+        const muteBtn = document.getElementById('volumeMuteBtn');
+        const volumeIcon = document.getElementById('volumeIcon');
+
+        const defaultVolume = 0.15;
+        audio.volume = defaultVolume;
+        let lastVolume = defaultVolume;
+
+        function updateSliderFill(value) {
+            volumeSlider.style.setProperty('--volume-percentage', `${value * 100}%`);
+        }
+        updateSliderFill(defaultVolume);
+
+        function drawVisualVolumeState(vol, isMuted) {
+            const wave1 = document.getElementById('audio-wave-1');
+            const wave2 = document.getElementById('audio-wave-2');
+            
+            if (isMuted || vol === 0) {
+                wave1.style.display = 'none';
+                wave2.style.display = 'none';
+                volumeIcon.setAttribute('stroke', '#768390');
+            } else if (vol < 0.5) {
+                wave1.style.display = 'block';
+                wave2.style.display = 'none';
+                volumeIcon.setAttribute('stroke', '#00ffcc');
+            } else {
+                wave1.style.display = 'block';
+                wave2.style.display = 'block';
+                volumeIcon.setAttribute('stroke', '#00ffcc');
+            }
+        }
+
+        // Advanced Unlocker Engine targeting any background interaction footprint
+        function unlockAutoplay() {
+            if (audio.paused) {
+                audio.play().then(() => {
+                    cleanUpListeners();
+                }).catch(err => {
+                    console.log("Audio context wake-up pending true interaction.");
+                });
+            } else {
+                cleanUpListeners();
+            }
+        }
+
+        function cleanUpListeners() {
+            window.removeEventListener('click', unlockAutoplay);
+            window.removeEventListener('touchstart', unlockAutoplay);
+            window.removeEventListener('keydown', unlockAutoplay);
+            window.removeEventListener('scroll', unlockAutoplay);
+        }
+
+        // Deploy early hook listeners
+        window.addEventListener('click', unlockAutoplay);
+        window.addEventListener('touchstart', unlockAutoplay);
+        window.addEventListener('keydown', unlockAutoplay);
+        window.addEventListener('scroll', unlockAutoplay);
+
+        // Immediate direct attempt layout load execution loop
+        window.addEventListener('DOMContentLoaded', () => {
+            audio.play().catch(() => {
+                console.log("Direct background autoplay prevented by sandbox policy rules. Passive hook armed.");
+            });
+        });
+
+        // Event Hook: Input Slider Tracker
+        volumeSlider.addEventListener('input', (e) => {
+            const currentVal = parseFloat(e.target.value);
+            audio.volume = currentVal;
+            if (currentVal > 0) {
+                audio.muted = false;
+                lastVolume = currentVal;
+            }
+            updateSliderFill(currentVal);
+            drawVisualVolumeState(currentVal, audio.muted);
+        });
+
+        // Event Hook: Clickable Interactive Mute Node
+        muteBtn.addEventListener('click', () => {
+            audio.muted = !audio.muted;
+            if (audio.muted) {
+                volumeSlider.value = 0;
+                updateSliderFill(0);
+            } else {
+                if (lastVolume === 0) lastVolume = defaultVolume;
+                audio.volume = lastVolume;
+                volumeSlider.value = lastVolume;
+                updateSliderFill(lastVolume);
+            }
+            drawVisualVolumeState(parseFloat(volumeSlider.value), audio.muted);
+        });
+    </script>
+</body>
+</html>
