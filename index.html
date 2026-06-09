@@ -3,282 +3,199 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joe | Cybersecurity Researcher & Developer</title>
+    <title>My Animated Workspace</title>
     <style>
-        :root {
-            --bg-color: #0d1117;
-            --card-bg: #161b22;
-            --border-color: #30363d;
-            --text-main: #c9d1d9;
-            --text-muted: #8b949e;
-            --accent: #58a6ff;
-            --accent-glow: rgba(88, 166, 255, 0.1);
-            --whatsapp-color: #25D366;
-            --discord-color: #5865F2;
-        }
-
+        /* Animated Matrix Background */
         body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
             margin: 0;
-            padding: 40px 20px;
+            padding: 0;
+            background-color: #050505;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+            height: 100vh;
             display: flex;
             justify-content: center;
-        }
-
-        .portfolio-container {
-            max-width: 800px;
-            width: 100%;
-        }
-
-        /* Hero Section */
-        header {
-            text-align: center;
-            padding: 40px 0;
-            border-bottom: 1px solid var(--border-color);
-            margin-bottom: 40px;
-        }
-
-        .avatar-placeholder {
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(135deg, #2f363d, #58a6ff);
-            border-radius: 50%;
-            margin: 0 auto 20px auto;
-            display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            color: white;
+            /* Custom Neon Crosshair Cursor */
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><line x1="16" y1="4" x2="16" y2="28" stroke="%2300ffcc" stroke-width="2"/><line x1="4" y1="16" x2="28" y2="16" stroke="%2300ffcc" stroke-width="2"/><circle cx="16" cy="16" r="4" fill="none" stroke="%2300ffcc" stroke-width="2"/></svg>') 16 16, auto;
+        }
+
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        /* Central Control Dashboard */
+        .container {
+            background: rgba(20, 20, 20, 0.85);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(0, 255, 204, 0.2);
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 255, 204, 0.3);
+            width: 350px;
+            z-index: 1;
         }
 
         h1 {
-            color: #ffffff;
-            font-size: 2.5rem;
-            margin: 0 0 10px 0;
+            font-size: 24px;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+            color: #00ffcc;
+            text-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
         }
 
-        .tagline {
-            color: var(--accent);
-            font-size: 1.2rem;
-            font-weight: 500;
-            margin: 0 0 15px 0;
-        }
-
-        .location-age {
-            color: var(--text-muted);
-            font-size: 1rem;
-        }
-
-        /* About & Journey Section */
-        .section {
-            margin-bottom: 40px;
-        }
-
-        h2 {
-            color: #ffffff;
-            font-size: 1.6rem;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-        }
-
-        .about-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            padding: 24px;
-            line-height: 1.6;
-            font-size: 1.1rem;
-        }
-
-        .highlight {
-            color: #ffffff;
-            font-weight: 600;
-            background-color: var(--accent-glow);
-            padding: 2px 6px;
-            border-radius: 4px;
-        }
-
-        /* Projects Section */
-        .project-list {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .project-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .project-info h3 {
-            margin: 0 0 5px 0;
-            color: #ffffff;
-        }
-
-        .project-info p {
-            margin: 0;
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        .project-link {
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 500;
-            border: 1px solid var(--border-color);
-            padding: 6px 12px;
-            border-radius: 4px;
-            background-color: var(--bg-color);
-            transition: background-color 0.2s, border-color 0.2s;
-        }
-
-        .project-link:hover {
-            background-color: var(--accent-glow);
-            border-color: var(--accent);
-        }
-
-        /* Skills Grid */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 15px;
-        }
-
-        .skill-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            padding: 15px;
-            text-align: center;
-            font-weight: 500;
-        }
-
-        /* Contact Section Buttons */
-        .contact-buttons {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
+        /* App Action Buttons */
         .btn {
-            display: inline-flex;
+            display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            padding: 12px 24px;
-            border-radius: 6px;
-            font-weight: 600;
-            text-decoration: none;
-            color: #ffffff;
-            font-size: 1rem;
-            transition: opacity 0.2s;
-            cursor: pointer;
+            width: 100%;
+            padding: 15px;
+            margin: 15px 0;
             border: none;
-            flex: 1;
-            min-width: 200px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+            cursor: inherit;
         }
 
-        .btn:hover {
-            opacity: 0.9;
+        .whatsapp-btn {
+            background-color: #25D366;
+            color: white;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
         }
 
-        .btn-whatsapp {
-            background-color: var(--whatsapp-color);
+        .whatsapp-btn:hover {
+            background-color: #20ba59;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
         }
 
-        .btn-discord {
-            background-color: var(--discord-color);
+        .music-btn {
+            background: linear-gradient(45deg, #00ffcc, #0077ff);
+            color: #111;
+            box-shadow: 0 4px 15px rgba(0, 255, 204, 0.4);
         }
 
-        /* Footer */
-        footer {
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-top: 60px;
-            border-top: 1px solid var(--border-color);
-            padding-top: 20px;
+        .music-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 255, 204, 0.7);
+        }
+
+        /* Music control pulsing animation when playing */
+        .playing {
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(0, 255, 204, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(0, 255, 204, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 255, 204, 0); }
+        }
+
+        .btn svg {
+            margin-right: 10px;
+            fill: currentColor;
         }
     </style>
 </head>
 <body>
 
-<div class="portfolio-container">
-    
-    <header>
-        <div class="avatar-placeholder">💻</div>
-        <h1>Joe</h1>
-        <div class="tagline">Cybersecurity Researcher & Developer</div>
-        <div class="location-age">🇪🇬 From Egypt • 🎂 17 Years Old</div>
-    </header>
+    <canvas id="matrix"></canvas>
 
-    <section class="section">
-        <h2>About Me</h2>
-        <div class="about-card">
-            <p>Hi, I am Joe! I have a deep passion for computer science, programming, and software development. My fascination with technology started at a very early age—<span class="highlight">I entered the tech and coding field when I was just 9 years old</span>.</p>
-            <p>Over the years, my interest evolved towards offensive security, leading me to deeply fall in love with <span class="highlight">Ethical Hacking and Cybersecurity</span>. I enjoy understanding how systems work under the hood, exploring vulnerabilities, and building tools to secure digital environments.</p>
-        </div>
-    </section>
+    <div class="container">
+        <h1>DASHBOARD</h1>
 
-    <section class="section">
-        <h2>Featured Security Tools</h2>
-        <div class="project-list">
-            
-            <div class="project-card">
-                <div class="project-info">
-                    <h3>⚡ Async-Scan</h3>
-                    <p>Simple Single-Threaded TCP Port Scanner (Python Sockets)</p>
-                </div>
-                <a class="project-link" href="https://github.com/Unknowen-sudo/Simple-TCP-Port-Scanner" target="_blank">View Code</a>
-            </div>
+        <a href="https://web.whatsapp.com/" target="_blank" class="btn whatsapp-btn">
+            <svg width="24" height="24" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397 0 11.944 0c3.172.001 6.155 1.234 8.397 3.477 2.242 2.242 3.472 5.224 3.472 8.397 0 6.549-5.337 11.93-11.884 11.93-2.007-.001-3.982-.51-5.734-1.482L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.413 9.86-9.845 0-2.63-1.023-5.101-2.882-6.959C16.528 1.886 14.062.862 11.429.862c-5.44 0-9.866 4.414-9.867 9.847 0 1.696.447 3.353 1.295 4.811L1.826 21.8l6.452-1.692zM17.367 14.38c-.327-.164-1.938-.955-2.239-1.064-.301-.109-.52-.164-.738.164-.219.329-.847 1.064-1.039 1.283-.192.219-.384.246-.711.082-.327-.164-1.381-.509-2.631-1.624-.973-.867-1.63-1.94-1.821-2.268-.192-.329-.02-.507.144-.671.147-.148.327-.383.491-.574.164-.192.219-.328.327-.546.109-.218.055-.41-.027-.574-.082-.164-.738-1.777-1.011-2.433-.267-.641-.539-.554-.738-.564-.192-.01-.41-.01-.628-.01-.218 0-.573.082-.873.41-.3.328-1.147 1.12-1.147 2.733 0 1.614 1.174 3.171 1.338 3.39.164.218 2.312 3.53 5.599 4.945.781.337 1.391.537 1.866.689.784.249 1.498.214 2.061.13.628-.094 1.938-.792 2.211-1.558.272-.766.272-1.422.192-1.557-.081-.134-.301-.218-.628-.382z"/></svg>
+            WhatsApp
+        </a>
 
-            <div class="project-card">
-                <div class="project-info">
-                    <h3>⌨️ System-Hook</h3>
-                    <p>Local Keystroke Event Logger & File Exfiltrator (Python)</p>
-                </div>
-                <a class="project-link" href="https://github.com/Unknowen-sudo/System-Hook" target="_blank">View Code</a>
-            </div>
+        <button id="musicToggle" class="btn music-btn">
+            <svg width="24" height="24" viewBox="0 0 24 24"><path d="M23 0l-14.5 2.822v15.053c-.714-.543-1.6-.875-2.58-.875-2.436 0-4.42 1.984-4.42 4.42s1.984 4.42 4.42 4.42c2.395 0 4.347-1.93 4.412-4.307l.008-.113v-13.435l11.588-2.254v9.643c-.714-.543-1.6-.875-2.58-.875-2.436 0-4.42 1.984-4.42 4.42s1.984 4.42 4.42 4.42c2.395 0 4.347-1.93 4.412-4.307l.008-.113v-16.143z"/></svg>
+            <span id="musicText">Favorite Music</span>
+        </button>
+    </div>
 
-        </div>
-    </section>
+    <audio id="bgMusic" src="music/1.mp3" loop></audio>
 
-    <section class="section">
-        <h2>Technical Core & Programming Languages</h2>
-        <div class="skills-grid">
-            <div class="skill-card" style="color: #3776AB;">🐍 Python</div>
-            <div class="skill-card" style="color: #f34b7d;">⚡ C++</div>
-            <div class="skill-card" style="color: #e34c26;">🌐 HTML5 & CSS3</div>
-            <div class="skill-card" style="color: #f1e05a;">🎛️ JavaScript</div>
-            <div class="skill-card" style="color: #4f5d95;">🛡️ Linux Bash</div>
-        </div>
-    </section>
+    <script>
+        // 1. Matrix Background Animation
+        const canvas = document.getElementById('matrix');
+        const ctx = canvas.getContext('2d');
 
-    <section class="section">
-        <h2>Connect With Me</h2>
-        <div class="contact-buttons">
-            <a href="https://wa.me/971586724788" target="_blank" class="btn btn-whatsapp">
-                💬 Chat on WhatsApp (+971 58 672 4788)
-            </a>
-            <div class="btn btn-discord">
-                🎮 Discord ID: vyn_222
-            </div>
-        </div>
-    </section>
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
 
-    <footer>
-        <p>© 2026 Joe. Driven by curiosity, built with code.</p>
-    </footer>
+        const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&';
+        const alphabet = letters.split('');
+        const fontSize = 16;
+        let columns = canvas.width / fontSize;
+        let rainDrops = [];
 
-</div>
+        function initRain() {
+            columns = canvas.width / fontSize;
+            rainDrops = [];
+            for (let x = 0; x < columns; x++) {
+                rainDrops[x] = 1;
+            }
+        }
+        initRain();
+        window.addEventListener('resize', initRain);
 
+        function drawMatrix() {
+            ctx.fillStyle = 'rgba(5, 5, 5, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = '#00ffcc';
+            ctx.font = fontSize + 'px monospace';
+
+            for (let i = 0; i < rainDrops.length; i++) {
+                const text = alphabet[Math.floor(Math.random() * alphabet.length)];
+                ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+
+                if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    rainDrops[i] = 0;
+                }
+                rainDrops[i]++;
+            }
+        }
+        setInterval(drawMatrix, 30);
+
+        // 2. Local Audio Engine Player
+        const musicBtn = document.getElementById('musicToggle');
+        const musicText = document.getElementById('musicText');
+        const audio = document.getElementById('bgMusic');
+
+        musicBtn.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play().then(() => {
+                    musicText.innerText = "Playing Limerence...";
+                    musicBtn.classList.add('playing');
+                }).catch(error => {
+                    alert("Make sure you saved '1.mp3' inside a folder named 'music' right next to this file!");
+                    console.error("Playback block or file missing:", error);
+                });
+            } else {
+                audio.pause();
+                musicText.innerText = "Favorite Music";
+                musicBtn.classList.remove('playing');
+            }
+        });
+    </script>
 </body>
 </html>
