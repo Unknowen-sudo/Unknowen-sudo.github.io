@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joe | Cybersecurity Researcher & Developer</title>
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --card-bg: #161b22;
+            --border-color: #30363d;
+            --text-main: #c9d1d9;
+            --text-muted: #8b949e;
+            --accent: #58a6ff;
+            --accent-glow: rgba(88, 166, 255, 0.1);
+            --whatsapp-color: #25D366;
+            --discord-color: #5865F2;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .portfolio-container {
+            max-width: 800px;
+            width: 100%;
+        }
+
+        /* Hero Section */
+        header {
+            text-align: center;
+            padding: 40px 0;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 40px;
+        }
+
+        .avatar-placeholder {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #2f363d, #58a6ff);
+            border-radius: 50%;
+            margin: 0 auto 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+        }
+
+        h1 {
+            color: #ffffff;
+            font-size: 2.5rem;
+            margin: 0 0 10px 0;
+        }
+
+        .tagline {
+            color: var(--accent);
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin: 0 0 15px 0;
+        }
+
+        .location-age {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        /* About & Journey Section */
+        .section {
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            color: #ffffff;
+            font-size: 1.6rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .about-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 24px;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        .highlight {
+            color: #ffffff;
+            font-weight: 600;
+            background-color: var(--accent-glow);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        /* Projects Section */
+        .project-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .project-info h3 {
+            margin: 0 0 5px 0;
+            color: #ffffff;
+        }
+
+        .project-info p {
+            margin: 0;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .project-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            border: 1px solid var(--border-color);
+            padding: 6px 12px;
+            border-radius: 4px;
+            background-color: var(--bg-color);
+            transition: background-color 0.2s, border-color 0.2s;
+        }
+
+        .project-link:hover {
+            background-color: var(--accent-glow);
+            border-color: var(--accent);
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
+        }
+
+        .skill-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 15px;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        /* Contact Section Buttons */
+        .contact-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 1rem;
+            transition: opacity 0.2s;
+            cursor: pointer;
+            border: none;
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        .btn-whatsapp {
+            background-color: var(--whatsapp-color);
+        }
+
+        .btn-discord {
+            background-color: var(--discord-color);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 60px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="portfolio-container">
+    
+    <header>
+        <div class="avatar-placeholder">💻</div>
+        <h1>Joe</h1>
+        <div class="tagline">Cybersecurity Researcher & Developer</div>
+        <div class="location-age">🇪🇬 From Egypt • 🎂 17 Years Old</div>
+    </header>
+
+    <section class="section">
+        <h2>About Me</h2>
+        <div class="about-card">
+            <p>Hi, I am Joe! I have a deep passion for computer science, programming, and software development. My fascination with technology started at a very early age—<span class="highlight">I entered the tech and coding field when I was just 9 years old</span>.</p>
+            <p>Over the years, my interest evolved towards offensive security, leading me to deeply fall in love with <span class="highlight">Ethical Hacking and Cybersecurity</span>. I enjoy understanding how systems work under the hood, exploring vulnerabilities, and building tools to secure digital environments.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>Featured Security Tools</h2>
+        <div class="project-list">
+            
+            <div class="project-card">
+                <div class="project-info">
+                    <h3>⚡ Async-Scan</h3>
+                    <p>Simple Single-Threaded TCP Port Scanner (Python Sockets)</p>
+                </div>
+                <a class="project-link" href="https://github.com/Unknowen-sudo/Simple-TCP-Port-Scanner" target="_blank">View Code</a>
+            </div>
+
+            <div class="project-card">
+                <div class="project-info">
+                    <h3>⌨️ System-Hook</h3>
+                    <p>Local Keystroke Event Logger & File Exfiltrator (Python)</p>
+                </div>
+                <a class="project-link" href="https://github.com/Unknowen-sudo/System-Hook" target="_blank">View Code</a>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>Technical Core & Programming Languages</h2>
+        <div class="skills-grid">
+            <div class="skill-card" style="color: #3776AB;">🐍 Python</div>
+            <div class="skill-card" style="color: #f34b7d;">⚡ C++</div>
+            <div class="skill-card" style="color: #e34c26;">🌐 HTML5 & CSS3</div>
+            <div class="skill-card" style="color: #f1e05a;">🎛️ JavaScript</div>
+            <div class="skill-card" style="color: #4f5d95;">🛡️ Linux Bash</div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>Connect With Me</h2>
+        <div class="contact-buttons">
+            <a href="https://wa.me/971586724788" target="_blank" class="btn btn-whatsapp">
+                💬 Chat on WhatsApp (+971 58 672 4788)
+            </a>
+            <div class="btn btn-discord">
+                🎮 Discord ID: vyn_222
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Joe. Driven by curiosity, built with code.</p>
+    </footer>
+
+</div>
+
+</body>
+</html>
