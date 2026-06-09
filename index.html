@@ -17,6 +17,8 @@
             --accent: #00ffcc;
             --accent-glow: rgba(0, 255, 204, 0.1);
             --whatsapp-color: #1f9c4d;
+            --github-color: #24292e;
+            --github-border: rgba(255, 255, 255, 0.15);
         }
 
         /* Animated Matrix Background Setup */
@@ -183,7 +185,7 @@
             font-weight: 500;
         }
 
-        /* Media Controls & Custom Interaction Elements */
+        /* Interaction Row Config */
         .contact-buttons {
             display: flex;
             gap: 15px;
@@ -201,11 +203,11 @@
             text-decoration: none;
             color: #ffffff;
             font-size: 1rem;
-            transition: opacity 0.2s, transform 0.2s;
+            transition: opacity 0.2s, transform 0.2s, border-color 0.2s;
             cursor: inherit;
             border: none;
             flex: 1;
-            min-width: 200px;
+            min-width: 180px;
             box-sizing: border-box;
         }
 
@@ -218,6 +220,15 @@
             background-color: var(--whatsapp-color);
         }
 
+        .btn-github {
+            background-color: var(--github-color);
+            border: 1px solid var(--github-border);
+        }
+        
+        .btn-github:hover {
+            border-color: var(--accent);
+        }
+
         /* Custom OS Minimal Audio Control Slider Wrapper */
         .audio-player-container {
             display: flex;
@@ -228,7 +239,7 @@
             padding: 12px 20px;
             gap: 14px;
             flex: 1;
-            min-width: 280px;
+            min-width: 240px;
             box-sizing: border-box;
         }
 
@@ -398,6 +409,11 @@
         <section class="section">
             <h2>Connect & Interaction</h2>
             <div class="contact-buttons">
+                <a href="https://github.com/Unknowen-sudo" target="_blank" class="btn btn-github">
+                    <svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+                    GitHub Profile
+                </a>
+
                 <a href="https://wa.me/971586724788" target="_blank" class="btn btn-whatsapp">
                     <svg width="20" height="20" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397 0 11.944 0c3.172.001 6.155 1.234 8.397 3.477 2.242 2.242 3.472 5.224 3.472 8.397 0 6.549-5.337 11.93-11.884 11.93-2.007-.001-3.982-.51-5.734-1.482L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.413 9.86-9.845 0-2.63-1.023-5.101-2.882-6.959C16.528 1.886 14.062.862 11.429.862c-5.44 0-9.866 4.414-9.867 9.847 0 1.696.447 3.353 1.295 4.811L1.826 21.8l6.452-1.692zM17.367 14.38c-.327-.164-1.938-.955-2.239-1.064-.301-.109-.52-.164-.738.164-.219.329-.847 1.064-1.039 1.283-.192.219-.384.246-.711.082-.327-.164-1.381-.509-2.631-1.624-.973-.867-1.63-1.94-1.821-2.268-.192-.329-.02-.507.144-.671.147-.148.327-.383.491-.574.164-.192.219-.328.327-.546.109-.218.055-.41-.027-.574-.082-.164-.738-1.777-1.011-2.433-.267-.641-.539-.554-.738-.564-.192-.01-.41-.01-.628-.01-.218 0-.573.082-.873.41-.3.328-1.147 1.12-1.147 2.733 0 1.614 1.174 3.171 1.338 3.39.164.218 2.312 3.53 5.599 4.945.781.337 1.391.537 1.866.689.784.249 1.498.214 2.061.13.628-.094 1.938-.792 2.211-1.558.272-.766.272-1.422.192-1.557-.081-.134-.301-.218-.628-.382z"/></svg>
                     Chat on WhatsApp
@@ -486,10 +502,8 @@
         }
         updateSliderFill(defaultVolume);
 
-        // Function to dynamically update the button UI path based on state
         function updatePlaybackUI(isPlaying) {
             if (isPlaying) {
-                // Change to Pause/Stop Graphic
                 playbackIcon.innerHTML = `<rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect>`;
                 playbackIcon.setAttribute('fill', 'none');
                 playbackIcon.setAttribute('stroke', 'currentColor');
@@ -497,14 +511,12 @@
                 playbackIcon.setAttribute('stroke-linecap', 'round');
                 playbackIcon.setAttribute('stroke-linejoin', 'round');
             } else {
-                // Change back to Play/Start Graphic
                 playbackIcon.innerHTML = `<polygon points="5 3 19 12 5 21 5 3"></polygon>`;
                 playbackIcon.setAttribute('fill', 'currentColor');
                 playbackIcon.removeAttribute('stroke');
             }
         }
 
-        // Toggle engine handler
         function togglePlayback() {
             if (audio.paused) {
                 audio.play()
@@ -518,14 +530,12 @@
 
         playbackBtn.addEventListener('click', togglePlayback);
 
-        // Event Hook: Input Slider Tracker
         volumeSlider.addEventListener('input', (e) => {
             const currentVal = parseFloat(e.target.value);
             audio.volume = currentVal;
             updateSliderFill(currentVal);
         });
 
-        // Background Interaction Footprint Capture Strategy for Auto-Wakeup
         function autoWakeUpPlay() {
             if (audio.paused) {
                 audio.play().then(() => {
